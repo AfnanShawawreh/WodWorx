@@ -1,0 +1,65 @@
+import React, {useState} from 'react';
+import Router from 'next/router';
+import cookie from 'js-cookie';
+import Link from "next/link";
+import Layout from "../components/Layout";
+
+const Login = () => {
+  
+  const [loginError, setLoginError] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    //call api
+    fetch('https://api.wodworx.com/v1/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((r) => {
+        return r.json();
+      })
+      .then((data) => {
+        if (data && data.error) {
+          setLoginError(data.message);
+          alert('Incorrect email or password')
+        }
+      
+        if (data && data.token) {
+          
+          cookie.set('token', data.token, {expires: 2});
+          Router.push('/');
+        }
+      });
+  }
+  return (
+    <Layout>      
+    <form onSubmit={handleSubmit}>
+      <p>Login</p>
+      <input
+        name="email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        name="password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+      {loginError && <p style={{color: 'red'}}>{loginError}</p>}
+    </form>
+    </Layout>
+  );
+};
+
+export default Login;
