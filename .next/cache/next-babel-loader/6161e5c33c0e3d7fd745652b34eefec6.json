@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport Head from 'next/head';\nexport default (() => __jsx(React.Fragment, null, __jsx(Head, null, __jsx(\"title\", null, \"next-pwa example\")), __jsx(\"h1\", null, \"Next.js + PWA = AWESOME!\")));","map":null,"metadata":{},"sourceType":"module"}

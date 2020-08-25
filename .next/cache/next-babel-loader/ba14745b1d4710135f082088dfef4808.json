@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport Link from \"next/link\";\n\nconst Nav = () => __jsx(\"div\", null, __jsx(\"img\", {\n  src: \"/static/logo.png\",\n  alt: \"logo\",\n  height: \"50\"\n}));\n\nexport default Nav;","map":null,"metadata":{},"sourceType":"module"}
