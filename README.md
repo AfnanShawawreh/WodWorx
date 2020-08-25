@@ -3,7 +3,7 @@ wodworx task
 ## Table of Contents
 
 1. [Usage](#Usage)
-2. [#Recommend `.gitignore`]
+2. [Recommend `.gitignore`]
 3. [Installing Dependencies](#installing-dependencies)
 
 ## Usage
