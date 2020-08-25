@@ -69,7 +69,15 @@ export default function SignIn() {
       password: password,
     };
     axios
-      .post("https://api.wodworx.com/v1/user/login", { email, password })
+      .post(
+        "https://cors-anywhere.herokuapp.com/https://api.wodworx.com/v1/user/login",
+        user,
+        {
+          headers: {
+            Origin: "X-Requested-With",
+          },
+        }
+      )
       .then((res) => {
         console.log("res", res);
         if (res.data.token) {
