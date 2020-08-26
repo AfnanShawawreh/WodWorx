@@ -15,6 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Layout from "../components/Layout";
+import { StylesProvider } from "@material-ui/core/styles";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -105,77 +106,79 @@ export default function SignIn() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Layout />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <img src="/static/logo.png" alt="logo" height="50" />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form
-          className={classes.form}
-          onSubmit={onSubmit}
-          method="post"
-          noValidate
-        >
-          <TextField
-            value={values.Email}
-            onChange={handleChange("Email")}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            value={values.password}
-            onChange={handleChange("password")}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            id="password"
-            type="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
+    <StylesProvider injectFirst>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Layout />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <img src="/static/logo.png" alt="logo" height="50" />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form
+            className={classes.form}
+            onSubmit={onSubmit}
+            method="post"
+            noValidate
           >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs></Grid>
-            <Grid item>
-              <Link href="signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+            <TextField
+              value={values.Email}
+              onChange={handleChange("Email")}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              value={values.password}
+              onChange={handleChange("password")}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              id="password"
+              type="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs></Grid>
+              <Grid item>
+                <Link href="signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+              <Grid item>
+                <p id="result"></p>
+              </Grid>
             </Grid>
-            <Grid item>
-              <p id="result"></p>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
+          </form>
+        </div>
+        <Box mt={8}>
+          <Copyright />
+        </Box>
+      </Container>
+    </StylesProvider>
   );
 }
