@@ -79,25 +79,26 @@ export default function SignIn() {
         }
       )
       .then((res) => {
-        console.log("res", res);
-        if (res.data.token) {
-          AsyncStorage.setItem("token", JSON.stringify(res.data.token));
-          // cookie.set('token', data.token, {expires: 2});
+        let resData = JSON.parse(res.request.response);
+        if (resData.data.token) {
+          document.getElementById("result").innerText = "Login Successed! ";
+          alert("Login Successed!");
+        }
+        if (resData.data.errors.email) {
+          document.getElementById(
+            "result"
+          ).innerText = resData.data.errors.email.join("\n");
+          alert(resData.data.errors.email.join("\n"));
         } else {
-          if (res.data.errors.password === "Incorrect email or password") {
-            alert("Incorrect email or password");
-          }
-          if (res.data.errors.email === "Email cannot be blank.") {
-            alert("Email cannot be blank.");
-          }
-          if (res.data.errors.password === "password cannot be blank.") {
-            alert("password cannot be blank.");
-          }
-          if (res.data.errors.email === "Email is not a valid email address.") {
-            alert("Email cannot be blank.");
+          if (resData.data.errors.password) {
+            document.getElementById(
+              "result"
+            ).innerText = resData.data.errors.password.join("\n");
+            alert(resData.data.errors.password.join("\n"));
           }
         }
       })
+
       .catch((err) => {
         console.log("error in request", err);
       });
