@@ -12,8 +12,8 @@ export default class extends Document {
     return (
       <html lang="en" dir="ltr">
         <Head>
-          <meta name="application-name" content={APP_NAME} />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="wodworx" content={APP_NAME} />
+          <meta name="wodworx login" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
             content="default"
