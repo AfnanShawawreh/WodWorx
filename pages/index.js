@@ -41,8 +41,8 @@ export default function SignIn() {
       )
       .then((res) => {
         let resData = JSON.parse(res.request.response);
-        if (resData.data) {
-          console.log(resData.data.token);
+        if (resData.data.token) {
+          
           alert( 'SUCCESSFUL LOGIN' );
         }
         if (resData.data.errors.email) {
